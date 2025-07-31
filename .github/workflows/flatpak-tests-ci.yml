@@ -82,9 +82,9 @@ jobs:
           if [ -d "~/.var/app/io.github.silverlan.pfm/data/crashdumps" ]; then
             cp -r ~/.var/app/io.github.silverlan.pfm/data/crashdumps artifacts/crashdumps
           fi
-          if [ -d "~/.var/app/io.github.silverlan.pfm/data/artifacts" ] && [ "$(ls -A ~/.var/app/io.github.silverlan.pfm/data/artifacts)" ]; then
-            cp -rf ~/.var/app/io.github.silverlan.pfm/data/artifacts/* artifacts/
-          fi
+
+          cd artifacts
+          ls -R
 
       - name: Upload artifact files
         uses: actions/upload-artifact@v4
