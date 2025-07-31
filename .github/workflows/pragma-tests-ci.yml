@@ -22,8 +22,9 @@ jobs:
 
     steps:
       - name: Set Initial Workflow Status
+        shell: bash
         run: |
-          echo ("WORKFLOW_STATUS=success") >> $env:GITHUB_ENV
+          echo "WORKFLOW_STATUS=success" >> $GITHUB_ENV
 
       - name: Run Tests
         uses: Silverlan/pragma/github_actions/run_common_tests@main
@@ -32,9 +33,10 @@ jobs:
           working-directory: 'install'
 
       - name: Set Failure Workflow Status
+        shell: bash
         if: failure()
         run: |
-          echo ("WORKFLOW_STATUS=failure") >> $env:GITHUB_ENV
+          echo "WORKFLOW_STATUS=failure" >> $env:GITHUB_ENV
         
       - uses: LouisBrunner/checks-action@v2.0.0
         if: always()
