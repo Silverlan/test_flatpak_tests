@@ -62,4 +62,4 @@ jobs:
 
       - name: Run Flatpak Package
         run: |
-          flatpak --user run io.github.silverlan.pfm -- -log 2 2
+          flatpak --user run io.github.silverlan.pfm -- -log 2 2 -cli -non_interactive +"exit"
