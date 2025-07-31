@@ -62,4 +62,26 @@ jobs:
 
       - name: Run Flatpak Package
         run: |
-          flatpak --user run io.github.silverlan.pfm -- -log 2 2 -cli -non_interactive
+          flatpak --user run io.github.silverlan.pfm -managed_by_package_manager -sandboxed -log 2 2 -cli -non_interactive -user_data_dir "~/.var/app/io.github.silverlan.pfm/data"
+
+      - name: Prepare artifact files
+        shell: bash
+        if: ${{ always() }}
+        run: |
+          mkdir -p artifacts
+          if [ -f "~/.var/app/io.github.silverlan.pfm/data/log.txt" ]; then
+            cp ~/.var/app/io.github.silverlan.pfm/data/log.txt artifacts/log.txt
+          fi
+          if [ -d "~/.var/app/io.github.silverlan.pfm/data/crashdumps" ]; then
+            cp -r ~/.var/app/io.github.silverlan.pfm/data/crashdumps artifacts/crashdumps
+          fi
+          if [ -d "~/.var/app/io.github.silverlan.pfm/data/artifacts" ] && [ "$(ls -A ~/.var/app/io.github.silverlan.pfm/data/artifacts)" ]; then
+            cp -rf ~/.var/app/io.github.silverlan.pfm/data/artifacts/* artifacts/
+          fi
+
+      - name: Upload artifact files
+        uses: actions/upload-artifact@v4
+        if: ${{ always() }}
+        with:
+          name: ${{ inputs.artifacts-name }}
+          path: "artifacts"
