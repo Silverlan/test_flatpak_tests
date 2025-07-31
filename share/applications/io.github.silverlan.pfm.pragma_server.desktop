@@ -1,0 +1,8 @@
+
+[Desktop Entry]
+Type=Application
+Name=Pragma Server
+GenericName=Dedicated Game Server
+Exec=io.github.silverlan.pfm.pragma_server.sh
+Categories=Utility;
+SingleMainWindow=1

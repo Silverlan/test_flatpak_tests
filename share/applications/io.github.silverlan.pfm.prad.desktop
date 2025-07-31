@@ -1,0 +1,7 @@
+
+[Desktop Entry]
+Type=Application
+Name=Pragma Lightmapper
+GenericName=Lightmapper
+Exec=io.github.silverlan.pfm.prad.sh
+Categories=Utility;

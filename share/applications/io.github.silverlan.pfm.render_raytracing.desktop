@@ -1,0 +1,9 @@
+
+[Desktop Entry]
+Type=Application
+Name=Pragma Renderer
+GenericName=Renderer
+Exec=io.github.silverlan.pfm.render_raytracing.sh
+Categories=Game;
+PrefersNonDefaultGPU=1
+SingleMainWindow=1

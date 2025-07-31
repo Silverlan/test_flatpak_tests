@@ -1,0 +1,13 @@
+
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Pragma Filmmaker
+GenericName=3D Animation Software
+Exec=io.github.silverlan.pfm.sh
+Categories=Graphics;
+PrefersNonDefaultGPU=1
+SingleMainWindow=1
+
+Icon=io.github.silverlan.pfm
+Terminal=false
