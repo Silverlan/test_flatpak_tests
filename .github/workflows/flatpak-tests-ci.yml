@@ -58,7 +58,7 @@ jobs:
 
       - name: Install Flatpak Package
         run: |
-          flatpak --user install --reinstall pfm-local io.github.silverlan.pfm
+          flatpak --user install --reinstall --assumeyes --noninteractive pfm-local io.github.silverlan.pfm
 
       - name: Run Flatpak Package
         run: |
