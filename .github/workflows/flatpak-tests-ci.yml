@@ -76,10 +76,10 @@ jobs:
         if: ${{ always() }}
         run: |
           mkdir -p artifacts
-          if [ -f "~/.var/app/io.github.silverlan.pfm/data/log.txt" ]; then
+          if [ -f ~/.var/app/io.github.silverlan.pfm/data/log.txt ]; then
             cp ~/.var/app/io.github.silverlan.pfm/data/log.txt artifacts/log.txt
           fi
-          if [ -d "~/.var/app/io.github.silverlan.pfm/data/crashdumps" ]; then
+          if [ -d ~/.var/app/io.github.silverlan.pfm/data/crashdumps ]; then
             cp -r ~/.var/app/io.github.silverlan.pfm/data/crashdumps artifacts/crashdumps
           fi
 
