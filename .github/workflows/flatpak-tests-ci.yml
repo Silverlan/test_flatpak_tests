@@ -90,5 +90,5 @@ jobs:
         uses: actions/upload-artifact@v4
         if: ${{ always() }}
         with:
-          name: ${{ inputs.artifacts-name }}
+          name: artifacts
           path: "artifacts"
