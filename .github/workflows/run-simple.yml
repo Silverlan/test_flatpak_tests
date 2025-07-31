@@ -32,4 +32,4 @@ jobs:
         shell: bash
         run: |
           cd install
-          ./pragma -log 0 0 -cli -non_interactive
+          pragma -log 0 0 -cli -non_interactive
