@@ -22,10 +22,26 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Download Pragma nightly build
+        run: |
+          mkdir -p install
+          wget https://github.com/Silverlan/pragma/releases/download/nightly/pragma-lin64.tar.gz \
+            -O pragma-lin64.tar.gz
+
+      - name: Extract Pragma into install/
+        run: |
+          tar -xzf pragma-lin64.tar.gz -C install
+          rm pragma-lin64.tar.gz
+
       - name: Install Flatpak and Flatpak Builder
         run: |
           sudo apt-get update
           sudo apt-get install -y flatpak flatpak-builder
+
+      - name: Add Flathub remote (user)
+        run: |
+          flatpak --user remote-add --if-not-exists flathub \
+            https://dl.flathub.org/repo/flathub.flatpakrepo
 
       - name: Build Flatpak Package
         run: |
