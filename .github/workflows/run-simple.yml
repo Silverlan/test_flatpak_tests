@@ -1,0 +1,35 @@
+name: Run CLI
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    permissions:
+      actions: write
+      contents: write
+      issues: read
+      pull-requests: read
+
+    name: Run CLI - ${{ matrix.config.os }}
+    runs-on: ${{ matrix.config.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - os: ubuntu-latest
+            name: "Ubuntu x64"
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Download Pragma nightly build
+        run: |
+          mkdir -p install
+          wget https://github.com/Silverlan/pragma/releases/download/nightly/pragma-lin64.tar.gz \
+            -O pragma-lin64.tar.gz
+
+      - name: Run
+        shell: bash
+        run: |
+          cd install
+          ./pragma -log 0 0 -cli -non_interactive
