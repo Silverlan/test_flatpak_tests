@@ -23,6 +23,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Download Pragma nightly build
+        shell: bash
         run: |
           mkdir -p install
           wget https://github.com/Silverlan/pragma/releases/download/nightly/pragma-lin64.tar.gz \
@@ -32,4 +33,5 @@ jobs:
         shell: bash
         run: |
           cd install
-          pragma -log 0 0 -cli -non_interactive
+          ls -R
+          ./pragma -log 0 0 -cli -non_interactive
