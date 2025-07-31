@@ -64,6 +64,13 @@ jobs:
         run: |
           flatpak --user run io.github.silverlan.pfm -managed_by_package_manager -sandboxed -log 2 2 -cli -non_interactive -user_data_dir "~/.var/app/io.github.silverlan.pfm/data"
 
+      - name: List files
+        shell: bash
+        if: ${{ always() }}
+        run: |
+          cd ~/.var/app/io.github.silverlan.pfm/data/
+          ls -R
+
       - name: Prepare artifact files
         shell: bash
         if: ${{ always() }}
