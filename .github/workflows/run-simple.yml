@@ -30,28 +30,28 @@ jobs:
             -O pragma-lin64.tar.gz
           tar -xzf pragma-lin64.tar.gz -C install
 
-      - name: Copy Override Files
-        shell: bash
-        run: |
-          # Ensure install directory exists
-          mkdir -p install
+      #- name: Copy Override Files
+      #  shell: bash
+      #  run: |
+      #    # Ensure install directory exists
+      #    mkdir -p install
+      #
+      #    if [ -d override ]; then
+      #      echo "Copying override files into install/…"
+      #      # Copy all files (including hidden), preserving attributes, and overwrite
+      #      cp -a override/. install/
+      #    else
+      #      echo "No override directory found; nothing to copy."
+      #    fi
 
-          if [ -d override ]; then
-            echo "Copying override files into install/…"
-            # Copy all files (including hidden), preserving attributes, and overwrite
-            cp -a override/. install/
-          else
-            echo "No override directory found; nothing to copy."
-          fi
-
-      - name: Download Additional Overrides
-        shell: bash
-        run: |
-          cd install
-          wget https://landing.pragma-engine.com/share/libclient.so -O lib/libclient.so
-          wget https://landing.pragma-engine.com/share/libiglfw.so -O lib/libiglfw.so
-          wget https://landing.pragma-engine.com/share/libpr_prosper_vulkan.so -O modules/graphics/vulkan/libpr_prosper_vulkan.so
-          wget https://landing.pragma-engine.com/share/libprosper_vulkan.so -O modules/graphics/vulkan/libprosper_vulkan.so
+      #- name: Download Additional Overrides
+      #  shell: bash
+      #  run: |
+      #    cd install
+      #    wget https://landing.pragma-engine.com/share/libclient.so -O lib/libclient.so
+      #    wget https://landing.pragma-engine.com/share/libiglfw.so -O lib/libiglfw.so
+      #    wget https://landing.pragma-engine.com/share/libpr_prosper_vulkan.so -O modules/graphics/vulkan/libpr_prosper_vulkan.so
+      #    wget https://landing.pragma-engine.com/share/libprosper_vulkan.so -O modules/graphics/vulkan/libprosper_vulkan.so
 
       - name: Run
         shell: bash
