@@ -49,3 +49,17 @@ jobs:
         run: |
           cd install
           ./pragma -log 0 0 -cli -non_interactive
+
+      - name: Upload Log
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: log
+          path: "install/log.txt"
+
+      - name: Upload Crashdumps
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: crashdumps
+          path: "install/crashdumps"
