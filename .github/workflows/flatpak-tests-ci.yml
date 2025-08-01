@@ -28,6 +28,7 @@ jobs:
           mkdir -p install
           wget https://github.com/Silverlan/pragma/releases/download/nightly/pragma-lin64.tar.gz \
             -O pragma-lin64.tar.gz
+          tar -xzf pragma-lin64.tar.gz -C install
 
       - name: Copy Override Files
         shell: bash
@@ -42,12 +43,6 @@ jobs:
           else
             echo "No override directory found; nothing to copy."
           fi
-
-      - name: Extract Pragma into install/
-        shell: bash
-        run: |
-          tar -xzf pragma-lin64.tar.gz -C install
-          rm pragma-lin64.tar.gz
 
       - name: Install Flatpak and Flatpak Builder
         shell: bash
