@@ -30,6 +30,20 @@ jobs:
             -O pragma-lin64.tar.gz
           tar -xzf pragma-lin64.tar.gz -C install
 
+      - name: Copy Override Files
+        shell: bash
+        run: |
+          # Ensure install directory exists
+          mkdir -p install
+
+          if [ -d override ]; then
+            echo "Copying override files into install/…"
+            # Copy all files (including hidden), preserving attributes, and overwrite
+            cp -a override/. install/
+          else
+            echo "No override directory found; nothing to copy."
+          fi
+
       - name: Run
         shell: bash
         run: |

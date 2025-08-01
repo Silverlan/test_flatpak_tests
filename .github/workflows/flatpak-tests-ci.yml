@@ -23,27 +23,46 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Download Pragma nightly build
+        shell: bash
         run: |
           mkdir -p install
           wget https://github.com/Silverlan/pragma/releases/download/nightly/pragma-lin64.tar.gz \
             -O pragma-lin64.tar.gz
 
+      - name: Copy Override Files
+        shell: bash
+        run: |
+          # Ensure install directory exists
+          mkdir -p install
+
+          if [ -d override ]; then
+            echo "Copying override files into install/…"
+            # Copy all files (including hidden), preserving attributes, and overwrite
+            cp -a override/. install/
+          else
+            echo "No override directory found; nothing to copy."
+          fi
+
       - name: Extract Pragma into install/
+        shell: bash
         run: |
           tar -xzf pragma-lin64.tar.gz -C install
           rm pragma-lin64.tar.gz
 
       - name: Install Flatpak and Flatpak Builder
+        shell: bash
         run: |
           sudo apt-get update
           sudo apt-get install -y flatpak flatpak-builder
 
       - name: Add Flathub remote (user)
+        shell: bash
         run: |
           flatpak --user remote-add --if-not-exists flathub \
             https://dl.flathub.org/repo/flathub.flatpakrepo
 
       - name: Build Flatpak Package
+        shell: bash
         run: |
           flatpak-builder \
             --force-clean \
@@ -53,14 +72,17 @@ jobs:
             builddir io.github.silverlan.pfm.yml
 
       - name: Add Flatpak Repo
+        shell: bash
         run: |
           flatpak --user remote-add --no-gpg-verify pfm-local repo
 
       - name: Install Flatpak Package
+        shell: bash
         run: |
           flatpak --user install --reinstall --assumeyes --noninteractive pfm-local io.github.silverlan.pfm
 
       - name: Run Flatpak Package
+        shell: bash
         run: |
           flatpak --user run io.github.silverlan.pfm -managed_by_package_manager -sandboxed -log 2 2 -cli -non_interactive -user_data_dir "~/.var/app/io.github.silverlan.pfm/data"
 
