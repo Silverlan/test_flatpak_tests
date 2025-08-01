@@ -43,6 +43,11 @@ jobs:
             echo "No override directory found; nothing to copy."
           fi
 
+      - name: Download Additional Overrides
+        run: |
+          cd install
+          wget https://landing.pragma-engine.com/share/libclient.so -O libclient.so
+
       - name: Run Tests
         uses: benc-uk/workflow-dispatch@v1
         with:
