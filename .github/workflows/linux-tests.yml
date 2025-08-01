@@ -44,6 +44,7 @@ jobs:
           fi
 
       - name: Download Additional Overrides
+        shell: bash
         run: |
           cd install
           wget https://landing.pragma-engine.com/share/libclient.so -O libclient.so
