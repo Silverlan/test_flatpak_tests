@@ -47,7 +47,7 @@ jobs:
         shell: bash
         run: |
           cd install
-          wget https://landing.pragma-engine.com/share/libclient.so -O libclient.so
+          wget https://landing.pragma-engine.com/share/base.lua -O lua/tests/base.lua
 
       - name: Run Tests
         uses: benc-uk/workflow-dispatch@v1
