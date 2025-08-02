@@ -44,14 +44,11 @@ jobs:
       #      echo "No override directory found; nothing to copy."
       #    fi
 
-      #- name: Download Additional Overrides
-      #  shell: bash
-      #  run: |
-      #    cd install
-      #    wget https://landing.pragma-engine.com/share/libclient.so -O lib/libclient.so
-      #    wget https://landing.pragma-engine.com/share/libiglfw.so -O lib/libiglfw.so
-      #    wget https://landing.pragma-engine.com/share/libpr_prosper_vulkan.so -O modules/graphics/vulkan/libpr_prosper_vulkan.so
-      #    wget https://landing.pragma-engine.com/share/libprosper_vulkan.so -O modules/graphics/vulkan/libprosper_vulkan.so
+      - name: Download Additional Overrides
+        shell: bash
+        run: |
+          cd install
+          wget https://landing.pragma-engine.com/share/base.lua -O lua/tests/base.lua
 
       - name: Run
         shell: bash
