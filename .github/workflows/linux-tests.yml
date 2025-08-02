@@ -29,25 +29,24 @@ jobs:
             -O pragma-lin64.tar.gz
           tar -xzf pragma-lin64.tar.gz -C install --strip-components=1
 
-      - name: Copy Override Files
-        shell: bash
-        run: |
-          # Ensure install directory exists
-          mkdir -p install
+      #- name: Copy Override Files
+      #  shell: bash
+      #  run: |
+      #    # Ensure install directory exists
+      #    mkdir -p install
 
-          if [ -d override ]; then
-            echo "Copying override files into install/…"
-            # Copy all files (including hidden), preserving attributes, and overwrite
-            cp -a override/. install/
-          else
-            echo "No override directory found; nothing to copy."
-          fi
+      #    if [ -d override ]; then
+      #      echo "Copying override files into install/…"
+      #      # Copy all files (including hidden), preserving attributes, and overwrite
+      #      cp -a override/. install/
+      #    else
+      #      echo "No override directory found; nothing to copy."
+      #    fi
 
       - name: Download Additional Overrides
         shell: bash
         run: |
           cd install
-          cd lua
           ls -R
           wget https://landing.pragma-engine.com/share/base.lua -O lua/tests/base.lua
 
