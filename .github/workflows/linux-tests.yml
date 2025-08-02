@@ -47,6 +47,8 @@ jobs:
         shell: bash
         run: |
           cd install
+          cd lua
+          ls -R
           wget https://landing.pragma-engine.com/share/base.lua -O lua/tests/base.lua
 
       - name: Run Tests
