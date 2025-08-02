@@ -21,6 +21,20 @@ jobs:
           - os: ${{ github.event.inputs.os == 'windows' && 'windows-latest' || 'ubuntu-24.04' }}
 
     steps:
+      - name: Download Pragma nightly build
+        run: |
+          mkdir -p install
+          wget https://github.com/Silverlan/pragma/releases/download/nightly/pragma-lin64.tar.gz \
+            -O pragma-lin64.tar.gz
+          tar -xzf pragma-lin64.tar.gz -C install
+
+      - name: Download Additional Overrides
+        shell: bash
+        run: |
+          cd install
+          ls -R
+          wget https://landing.pragma-engine.com/share/base.lua -O lua/tests/base.lua
+
       - name: Set Initial Workflow Status
         shell: bash
         run: |

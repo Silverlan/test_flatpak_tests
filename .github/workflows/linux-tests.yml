@@ -27,7 +27,7 @@ jobs:
           mkdir -p install
           wget https://github.com/Silverlan/pragma/releases/download/nightly/pragma-lin64.tar.gz \
             -O pragma-lin64.tar.gz
-          tar -xzf pragma-lin64.tar.gz -C install --strip-components=1
+          tar -xzf pragma-lin64.tar.gz -C install
 
       #- name: Copy Override Files
       #  shell: bash
