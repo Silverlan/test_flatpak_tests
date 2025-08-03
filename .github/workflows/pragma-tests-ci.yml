@@ -33,7 +33,7 @@ jobs:
         run: |
           cd install
           ls -R
-          wget https://landing.pragma-engine.com/share/base.lua -O lua/tests/base.lua
+          #wget https://landing.pragma-engine.com/share/base.lua -O lua/tests/base.lua
 
       - name: Set Initial Workflow Status
         shell: bash
